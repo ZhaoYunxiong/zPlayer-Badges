@@ -62,7 +62,8 @@ const groups = {
     },
   },
   "audio-channels": {
-    primarySize: 52,
+    primarySize: 60,
+    subtitleSize: 18,
     items: {
       "ch-916": ["9.1.6", "SURROUND"],
       "ch-20": ["2.0", "STEREO"],
@@ -79,9 +80,9 @@ const groups = {
     },
   },
   "sample-rate": {
-    primarySize: 52,
+    primarySize: 60,
     inlineUnit: true,
-    unitSize: 24,
+    unitSize: 32,
     items: {
       "sr-192": ["192", "kHz"],
       "sr-1764": ["176.4", "kHz"],
@@ -92,9 +93,9 @@ const groups = {
     },
   },
   "frame-rate": {
-    primarySize: 52,
+    primarySize: 60,
     inlineUnit: true,
-    unitSize: 24,
+    unitSize: 32,
     items: {
       "fr-120": ["120", "FPS"],
       "fr-60": ["60", "FPS"],
@@ -146,7 +147,7 @@ function round(value) {
 
 function wordmark(primary, subtitle, options) {
   const primarySize = options.primarySize;
-  const subtitleSize = 14;
+  const subtitleSize = options.subtitleSize || 14;
   const primarySpacing = 0.8;
   const subtitleSpacing = 1.2;
   const primaryWidth = textWidth(primary, primarySize, primarySpacing);
