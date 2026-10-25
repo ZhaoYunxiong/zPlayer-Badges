@@ -12,7 +12,7 @@
     h1 { margin: 0 0 4px; font-size: 20px; }
     .sub { color: var(--muted); }
     .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
-    input { width: min(360px, 100%); padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #0d0f11; color: inherit; outline: none; }
+    input { width: min(340px, 100%); padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #0d0f11; color: inherit; outline: none; }
     input:focus { border-color: var(--accent); }
     .pill, button { padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #242a31; color: #cbd5df; font-size: 12px; }
     button { cursor: pointer; }
@@ -27,44 +27,34 @@
     .preview img { max-width: 100%; max-height: 48px; object-fit: contain; }
     .fallback { display: none; min-width: 64px; padding: 6px 12px; border: 1px solid #46515c; border-radius: 6px; color: #fff; background: #2b3138; font-weight: 600; text-align: center; }
     .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
-    .meta { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; color: var(--muted); font-size: 11px; }
-    .meta span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .host { color: #8bb4f8; }
     .empty { color: var(--muted); padding: 20px 0; }
-    footer { margin-top: 36px; padding: 18px 24px 36px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
-    footer a { color: #8bb4f8; }
   </style>
 </head>
 <body>
 <header>
   <h1>zPlayer Badge Library</h1>
-  <div class="sub">技术标签、封装格式、字幕组与制作组 · 共 <strong id="count">-</strong> 枚</div>
+  <div class="sub">共 <strong id="count">-</strong> 枚徽章</div>
   <div class="toolbar">
-    <input id="search" type="search" placeholder="搜索名称、ID 或正则…" autofocus>
+    <input id="search" type="search" placeholder="搜索徽章名称…" autofocus>
     <span class="pill" id="visible-count">加载中…</span>
     <button id="copy-url" type="button">复制徽章库地址</button>
     <a class="pill" href="badges.json" target="_blank" rel="noreferrer">查看 JSON</a>
   </div>
 </header>
-<main id="root"><div class="empty">正在加载 badges.json…</div></main>
-<footer>
-  图片和规则来自 zPlayer Badge Library 及其上游作者。使用或再分发前请阅读
-  <a href="THIRD_PARTY_NOTICES.md">第三方声明</a>。
-  通过 GitHub Pages 打开此页面时，页面地址就是徽章库的预览地址。
-</footer>
+<main id="root"><div class="empty">正在加载…</div></main>
 <script>
   const root = document.getElementById('root');
   const search = document.getElementById('search');
   const visibleCount = document.getElementById('visible-count');
   const count = document.getElementById('count');
   let data;
-
-  const escapeText = (value) => String(value ?? '');
+  let groupNames;
 
   function render() {
     const q = search.value.trim().toLowerCase();
-    const matched = data.filters.filter((f) =>
-      [f.name, f.id, f.groupId, f.pattern].join(' ').toLowerCase().includes(q));
+    const matched = data.filters.filter((filter) =>
+      (filter.name || '').toLowerCase().includes(q) ||
+      (groupNames.get(filter.groupId) || '').toLowerCase().includes(q));
     root.replaceChildren();
     for (const group of data.groups) {
       const items = matched.filter((filter) => filter.groupId === group.id);
@@ -82,36 +72,20 @@
         card.className = 'card';
         const preview = document.createElement('div');
         preview.className = 'preview';
-        if (item.imageURL) {
-          const image = document.createElement('img');
-          image.loading = 'lazy';
-          image.alt = escapeText(item.name || item.id);
-          image.src = item.imageURL;
-          const fallback = document.createElement('span');
-          fallback.className = 'fallback';
-          fallback.textContent = escapeText(item.name || item.id);
-          image.onerror = () => { image.remove(); fallback.style.display = 'block'; };
-          preview.append(image, fallback);
-        } else {
-          const fallback = document.createElement('span');
-          fallback.className = 'fallback';
-          fallback.textContent = escapeText(item.name || item.id);
-          fallback.style.display = 'block';
-          preview.append(fallback);
-        }
+        const image = document.createElement('img');
+        image.loading = 'lazy';
+        image.alt = item.name || '';
+        image.src = item.imageURL;
+        const fallback = document.createElement('span');
+        fallback.className = 'fallback';
+        fallback.textContent = item.name || '';
+        image.onerror = () => { image.remove(); fallback.style.display = 'block'; };
+        preview.append(image, fallback);
         const name = document.createElement('div');
         name.className = 'name';
-        name.textContent = escapeText(item.name || item.id);
+        name.textContent = item.name || '';
         name.title = name.textContent;
-        const meta = document.createElement('div');
-        meta.className = 'meta';
-        const id = document.createElement('span');
-        id.textContent = escapeText(item.id);
-        const kind = document.createElement('span');
-        kind.className = 'host';
-        kind.textContent = item.imageURL?.includes('/generated/') ? 'generated' : 'original';
-        meta.append(id, kind);
-        card.append(preview, name, meta);
+        card.append(preview, name);
         grid.append(card);
       }
       section.append(title, grid);
@@ -130,7 +104,7 @@
     const url = new URL('badges.json', location.href).href;
     try {
       await navigator.clipboard.writeText(url);
-      visibleCount.textContent = '已复制导入地址';
+      visibleCount.textContent = '已复制徽章库地址';
     } catch {
       window.prompt('复制徽章库地址', url);
     }
@@ -144,12 +118,12 @@
     })
     .then((json) => {
       data = json;
+      groupNames = new Map(data.groups.map((group) => [group.id, group.name]));
       count.textContent = data.filters.length;
       render();
     })
-    .catch((error) => {
-      root.innerHTML = '<div class="empty">加载失败：' + escapeText(error.message) +
-        '<br>请通过 GitHub Pages 或本地 HTTP 服务打开此页面。</div>';
+    .catch(() => {
+      root.innerHTML = '<div class="empty">加载失败，请通过 GitHub Pages 打开此页面。</div>';
     });
 </script>
 </body>
