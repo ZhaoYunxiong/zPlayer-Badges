@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="48" viewBox="0 0 80 48">
+  <rect x="1" y="1" width="78" height="46" rx="8" fill="#171B20" stroke="#46515C" stroke-width="2"/>
+  <rect x="1" y="1" width="6" height="46" rx="3" fill="#D46A8C"/>
+  <text x="42.5" y="31" text-anchor="middle" font-family="Segoe UI, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="700" fill="#F5F8FB">远鉴</text>
+</svg>
