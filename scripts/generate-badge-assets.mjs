@@ -80,6 +80,8 @@ const groups = {
   },
   "sample-rate": {
     primarySize: 52,
+    inlineUnit: true,
+    unitSize: 24,
     items: {
       "sr-192": ["192", "kHz"],
       "sr-1764": ["176.4", "kHz"],
@@ -91,6 +93,8 @@ const groups = {
   },
   "frame-rate": {
     primarySize: 52,
+    inlineUnit: true,
+    unitSize: 24,
     items: {
       "fr-120": ["120", "FPS"],
       "fr-60": ["60", "FPS"],
@@ -136,16 +140,39 @@ function escapeXml(value) {
   return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 }
 
+function round(value) {
+  return Number(value.toFixed(2));
+}
+
 function wordmark(primary, subtitle, options) {
   const primarySize = options.primarySize;
   const subtitleSize = 14;
   const primarySpacing = 0.8;
   const subtitleSpacing = 1.2;
   const primaryWidth = textWidth(primary, primarySize, primarySpacing);
+  const subtitleColor = options.subtitleColor || "#C4CDD8";
+
+  if (options.inlineUnit) {
+    const gap = 7;
+    const unitSize = options.unitSize;
+    const unitSpacing = 0.8;
+    const unitWidth = textWidth(subtitle, unitSize, unitSpacing);
+    const contentWidth = primaryWidth + gap + unitWidth;
+    const width = Math.max(88, Math.ceil((contentWidth + 32) / 2) * 2);
+    const start = (width - contentWidth) / 2;
+    const label = `${primary} ${subtitle}`;
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="89" viewBox="0 0 ${width} 89" role="img" aria-label="${escapeXml(label)}">
+  <title>${escapeXml(label)}</title>
+  <text x="${round(start)}" y="63" text-anchor="start" font-family="Segoe UI, Arial, sans-serif" font-size="${primarySize}" font-weight="800" letter-spacing="${primarySpacing}" fill="#FEFEFE">${escapeXml(primary)}</text>
+  <text x="${round(start + primaryWidth + gap)}" y="63" text-anchor="start" font-family="Segoe UI, Arial, sans-serif" font-size="${unitSize}" font-weight="700" letter-spacing="${unitSpacing}" fill="${subtitleColor}">${escapeXml(subtitle)}</text>
+</svg>
+`;
+  }
+
   const subtitleWidth = textWidth(subtitle, subtitleSize, subtitleSpacing);
   const width = Math.max(88, Math.ceil((Math.max(primaryWidth, subtitleWidth) + 32) / 2) * 2);
   const center = width / 2;
-  const subtitleColor = options.subtitleColor || "#C4CDD8";
   const label = `${primary} — ${subtitle}`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="89" viewBox="0 0 ${width} 89" role="img" aria-label="${escapeXml(label)}">
