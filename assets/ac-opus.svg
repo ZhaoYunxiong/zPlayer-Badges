@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="84" height="48" viewBox="0 0 84 48">
-  <rect x="1" y="1" width="82" height="46" rx="8" fill="#171B20" stroke="#46515C" stroke-width="2"/>
-  <rect x="1" y="1" width="6" height="46" rx="3" fill="#E08A3C"/>
-  <text x="44.5" y="31" text-anchor="middle" font-family="Segoe UI, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="700" fill="#F5F8FB">Opus</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="89" viewBox="0 0 150 89" role="img" aria-label="Opus — LOW LATENCY">
+  <title>Opus — LOW LATENCY</title>
+  <text x="75" y="49" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="0.8" fill="#FEFEFE">Opus</text>
+  <text x="75" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2" fill="#C4CDD8">LOW LATENCY</text>
 </svg>

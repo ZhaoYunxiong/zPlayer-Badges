@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="107" height="48" viewBox="0 0 107 48">
-  <rect x="1" y="1" width="105" height="46" rx="8" fill="#171B20" stroke="#46515C" stroke-width="2"/>
-  <rect x="1" y="1" width="6" height="46" rx="3" fill="#4E9E8A"/>
-  <text x="56" y="31" text-anchor="middle" font-family="Segoe UI, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="700" fill="#F5F8FB">176.4K</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="172" height="89" viewBox="0 0 172 89" role="img" aria-label="176.4 — kHz">
+  <title>176.4 — kHz</title>
+  <text x="86" y="49" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="800" letter-spacing="0.8" fill="#FEFEFE">176.4</text>
+  <text x="86" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2" fill="#C4CDD8">kHz</text>
 </svg>

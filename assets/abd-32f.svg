@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="119" height="48" viewBox="0 0 119 48">
-  <rect x="1" y="1" width="117" height="46" rx="8" fill="#171B20" stroke="#46515C" stroke-width="2"/>
-  <rect x="1" y="1" width="6" height="46" rx="3" fill="#C27A3A"/>
-  <text x="62" y="31" text-anchor="middle" font-family="Segoe UI, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="700" fill="#F5F8FB">32FLOAT</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="202" height="89" viewBox="0 0 202 89" role="img" aria-label="32BIT — FLOAT AUDIO DEPTH">
+  <title>32BIT — FLOAT AUDIO DEPTH</title>
+  <text x="101" y="49" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="0.8" fill="#FEFEFE">32BIT</text>
+  <text x="101" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2" fill="#C4CDD8">FLOAT AUDIO DEPTH</text>
 </svg>

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="72" height="48" viewBox="0 0 72 48">
-  <rect x="1" y="1" width="70" height="46" rx="8" fill="#171B20" stroke="#46515C" stroke-width="2"/>
-  <rect x="1" y="1" width="6" height="46" rx="3" fill="#4FB3D9"/>
-  <text x="38.5" y="31" text-anchor="middle" font-family="Segoe UI, Microsoft YaHei, Arial, sans-serif" font-size="19" font-weight="700" fill="#F5F8FB">60</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="94" height="89" viewBox="0 0 94 89" role="img" aria-label="60 — FPS">
+  <title>60 — FPS</title>
+  <text x="47" y="49" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="800" letter-spacing="0.8" fill="#FEFEFE">60</text>
+  <text x="47" y="68" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.2" fill="#C4CDD8">FPS</text>
 </svg>
