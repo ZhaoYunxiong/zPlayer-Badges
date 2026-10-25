@@ -82,7 +82,7 @@ const groups = {
   "sample-rate": {
     primarySize: 60,
     inlineUnit: true,
-    unitSize: 32,
+    unitSize: 60,
     items: {
       "sr-192": ["192", "kHz"],
       "sr-1764": ["176.4", "kHz"],
@@ -95,7 +95,7 @@ const groups = {
   "frame-rate": {
     primarySize: 60,
     inlineUnit: true,
-    unitSize: 32,
+    unitSize: 60,
     items: {
       "fr-120": ["120", "FPS"],
       "fr-60": ["60", "FPS"],
@@ -154,7 +154,7 @@ function wordmark(primary, subtitle, options) {
   const subtitleColor = options.subtitleColor || "#C4CDD8";
 
   if (options.inlineUnit) {
-    const gap = 7;
+    const gap = 10;
     const unitSize = options.unitSize;
     const unitSpacing = 0.8;
     const unitWidth = textWidth(subtitle, unitSize, unitSpacing);
